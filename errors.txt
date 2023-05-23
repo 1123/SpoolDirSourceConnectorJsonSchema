@@ -1,0 +1,33 @@
+Dangling meta character '*' near index 0\n*\n
+
+==> wildcard character must be enclosed in double quotes
+
+java.lang.NullPointerException: 'key.schema' must be set if 'schema.generation.enabled' = false
+
+==> key.schema must be set
+
+Caused by: java.lang.NumberFormatException: For input string: "  340"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+
+==> remove leading whitespace
+
+[2023-05-23 11:21:23,291] ERROR [spooldir|task-0] Exception encountered proce
+ssing line 13 of spoolDirCsvSourceConnector/d
+ata/airtravel.csv. (com.github.jcustenborder.kafka.connect.spooldir.AbstractS
+ourceTask:265)
+java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+
+==> Remove empty lines in the file
+
+[2023-05-23 11:27:26,622] ERROR [spooldir|task-0] Exception encountered proce
+ssing line -1 of spoolDirCsvSourceConnector/d
+ata/airtravel.csv.
+
+==> Remove spaces in first line of csv file
+
+Caused by: org.apache.avro.SchemaParseException: Illegal initial character: 1
+958
+
+Found null value for non-optional schema\n\tat io.confluent.connect.avro.AvroData.validateSchemaValue(AvroData.java
+
+==> make sure that the fields referenced in the key.schema and value.schema match the ones in the first line of the CSV file. 
